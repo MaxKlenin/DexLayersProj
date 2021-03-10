@@ -12,7 +12,7 @@ namespace ObjectTests
 
         private enum TypeOfParameters { Perimeter, Square }
 
-        private static void _createArr()
+        private void CreateArr()
         {
             var rand = new Random();
             _fArray = new BaseFigure[100];
@@ -42,17 +42,17 @@ namespace ObjectTests
             }
         }
 
-        private void _sortByPerimeter()
+        private void SortByPerimeter()
         {
             Array.Sort(_fArray, new PerimeterComparer());
         }
 
-        private void _sortBySquare()
+        private void SortBySquare()
         {
             Array.Sort(_fArray, new SquareComparer());
         }
 
-        private void _printArray(TypeOfParameters type)
+        private void PrintArray(TypeOfParameters type)
         {
             foreach (var figure in _fArray)
             {
@@ -68,7 +68,7 @@ namespace ObjectTests
             Console.WriteLine();
         }
 
-        private bool _isSorted(BaseFigure[] fArray, TypeOfParameters parameters)
+        private bool IsSorted(BaseFigure[] fArray, TypeOfParameters parameters)
         {
             if (fArray == null)
             {
@@ -97,24 +97,23 @@ namespace ObjectTests
         [SetUp]
         public void Setup()
         {
-            _createArr();
+            CreateArr();
         }
 
         [Test]
         public void SortBySquareTest()
         {
-            _sortBySquare();
-            _printArray(TypeOfParameters.Square);
-            Assert.True(_isSorted(_fArray, TypeOfParameters.Square));
+            SortBySquare();
+            PrintArray(TypeOfParameters.Square);
+            Assert.True(IsSorted(_fArray, TypeOfParameters.Square));
         }
 
         [Test]
         public void SortByPerimeterTest()
         {
-            _sortByPerimeter();
-            _printArray(TypeOfParameters.Perimeter);
-            Assert.True(_isSorted(_fArray, TypeOfParameters.Perimeter));
+            SortByPerimeter();
+            PrintArray(TypeOfParameters.Perimeter);
+            Assert.True(IsSorted(_fArray, TypeOfParameters.Perimeter));
         }
-
     }
 }

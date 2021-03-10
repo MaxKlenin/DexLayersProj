@@ -12,7 +12,7 @@ namespace ObjectTests
             "Бигль", "Бладхаунд", "Бобтейл", "Боксер", "Босерон",
             "Немецкая овчарка", "Немецкий дог", "Ньюфаундленд"};
 
-        private void _generateDogs()
+        private void GenerateDogs()
         {
             var rand = new Random();
             dogs = new Doge[100];
@@ -32,13 +32,13 @@ namespace ObjectTests
         [SetUp]
         public void Setup()
         {
-            _generateDogs();
+            GenerateDogs();
         }
 
         [Test]
         public void WhereAndOrderBySamplingTest()
         {
-            Console.WriteLine("***(Where) Клички собак начаниются на букву Б ***");
+            Console.WriteLine("***(Where) Породы собак начаниются на букву Б ***");
             var selectedDogeName = dogs.Where(d => d.Name.ToUpper().StartsWith("Б")).OrderBy(d => d.Name);
             foreach (var item in selectedDogeName)
             {
@@ -93,7 +93,6 @@ namespace ObjectTests
             {
                 Console.WriteLine("В 2020 году собаки не родились");
             }
-
         }
     }
 }
