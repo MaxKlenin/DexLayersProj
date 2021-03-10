@@ -12,11 +12,6 @@ namespace ObjectTests
             "Бигль", "Бладхаунд", "Бобтейл", "Боксер", "Босерон",
             "Немецкая овчарка", "Немецкий дог", "Ньюфаундленд"};
 
-        private static bool _nextBoolean(Random random)
-        {
-            return random.Next() > (Int32.MaxValue / 2);
-        }
-
         private void _generateDogs()
         {
             var rand = new Random();
@@ -28,8 +23,9 @@ namespace ObjectTests
                 int day = rand.Next(1, 29);
                 int month = rand.Next(1, 13);
                 int year = rand.Next(2015, 2021);
+                bool randomBool = rand.Next(0, 2) > 0;
                 dogs[i] = new Doge(dogeNames[rndIndex], rndWeight,
-                    new DateTime(year, month, day), _nextBoolean(rand));
+                    new DateTime(year, month, day), randomBool);
             }
         }
 
