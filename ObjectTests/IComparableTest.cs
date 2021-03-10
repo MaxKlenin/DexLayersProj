@@ -8,8 +8,7 @@ namespace ObjectTests
     
     public class IComparableTest
     {
-        private static BaseFigure[] _fArray;
-
+        private BaseFigure[] _fArray;
         private enum TypeOfParameters { Perimeter, Square }
 
         private void CreateArr()

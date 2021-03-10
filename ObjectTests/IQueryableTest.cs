@@ -64,8 +64,8 @@ namespace ObjectTests
             int maxNameLenght = dogs.Max(d => d.Name.Length);
             Console.WriteLine($"Минимальное кол-во символов в название породы собаки: {minNameLenght}" +
                 $"\nМаксимальное кол-во символов в название породы собаки: {maxNameLenght}");
-            int sumVaccinated = dogs.Sum(d => Convert.ToInt32(d.IsVaccinated));
-            Console.WriteLine($"Общее кол-во привитых собак: {sumVaccinated}");
+            int sumVaccinatedDog = dogs.Sum(d => Convert.ToInt32(d.IsVaccinated));
+            Console.WriteLine($"Общее кол-во привитых собак: {sumVaccinatedDog}");
         }
 
         [Test]
