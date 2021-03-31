@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading;
+﻿using Object.Figure;
 using NUnit.Framework;
+using System;
+using Object.FigureComparer;
+using System.Diagnostics;
+using System.Collections.Generic;
 using Object.Person;
 
 namespace ObjectTests
 {
-    public class DictionaryTest
+    public class DictionaryVSListTest
     {
         private static Random _rand = new Random();
 
@@ -22,8 +22,6 @@ namespace ObjectTests
                     "присвоенно неверное знаечение параметру count");
             }
 
-            stopwatch.Reset();
-
             var dict = new Dictionary<Person, string>();
 
             for (int i = 0; i < count; i++)
@@ -32,10 +30,7 @@ namespace ObjectTests
                 {
                     var person = GeneratorFromPerson.GeneratePerson();
                     string workPlace = GeneratorFromPerson.GeneratorPersonWorkPlace();
-
-                    stopwatch.Start();
                     dict.Add(person, workPlace);
-                    stopwatch.Stop();
                 }
                 catch (ArgumentException)
                 {
@@ -54,8 +49,6 @@ namespace ObjectTests
                     "присвоенно неверное знаечение параметру count");
             }
 
-            stopwatch.Reset();
-
             var dict = new Dictionary<PersonHandMadeHash, string>();
 
             for (int i = 0; i < count; i++)
@@ -64,10 +57,7 @@ namespace ObjectTests
                 {
                     var person = GeneratorFromPerson.GeneratePersonHandMadeHash();
                     string workPlace = GeneratorFromPerson.GeneratorPersonWorkPlace();
-
-                    stopwatch.Start();
                     dict.Add(person, workPlace);
-                    stopwatch.Stop();
                 }
                 catch (ArgumentException)
                 {
@@ -87,8 +77,6 @@ namespace ObjectTests
                     "присвоенно неверное знаечение параметру count");
             }
 
-            stopwatch.Reset();
-
             var list = new List<Person>();
 
             for (int i = 0; i < count; i++)
@@ -96,10 +84,7 @@ namespace ObjectTests
                 try
                 {
                     var person = GeneratorFromPerson.GeneratePerson();
-
-                    stopwatch.Start();
                     list.Add(person);
-                    stopwatch.Stop();
                 }
                 catch (ArgumentException)
                 {
@@ -118,8 +103,6 @@ namespace ObjectTests
                     "присвоенно неверное знаечение параметру count");
             }
 
-            stopwatch.Reset();
-
             var list = new List<PersonHandMadeHash>();
 
             for (int i = 0; i < count; i++)
@@ -127,10 +110,7 @@ namespace ObjectTests
                 try
                 {
                     var person = GeneratorFromPerson.GeneratePersonHandMadeHash();
-
-                    stopwatch.Start();
                     list.Add(person);
-                    stopwatch.Stop();
                 }
                 catch (ArgumentException)
                 {
@@ -173,11 +153,82 @@ namespace ObjectTests
             return result;
         }
 
-        private void SetInstanceCount(int count)
+        private bool FindInListVSDictionary(int count)
         {
+            Dictionary<Person, string> dictOfPerson = GeneratePersonsDictionary(count);
+            List<Person> listOfPeorson = GeneratePersonsList(count);
 
+            Dictionary<Person, string>.KeyCollection keys = dictOfPerson.Keys;
+            Person[] keysPerson = new Person[keys.Count];
+            keys.CopyTo(keysPerson, 0);
+            Person person = keysPerson[_rand.Next(0, keys.Count)];
+
+            FindInDictionary(dictOfPerson, person);
+            Console.WriteLine("На поиск элемента в словаре с " + count + " элементов с генерированным хешем ушло : " + 
+                stopwatch.ElapsedMilliseconds + " миллисекунд");
+            long stopwatchTime = stopwatch.ElapsedMilliseconds;
+
+            FindInList(person, listOfPeorson);
+            Console.WriteLine("На поиск элемента в cписке с " + count + " элементов с генерированным хешем ушло : " +
+                stopwatch.ElapsedMilliseconds + " миллисекунд");
+
+            if (stopwatch.ElapsedMilliseconds > stopwatchTime)
+                return true;
+            else return false;
         }
 
+        private bool FindInListVSDictionaryHandMadeHash(int count)
+        {
+            Dictionary<PersonHandMadeHash, string> dictOfPerson = GeneratePersonsDictionaryWithHandMadeHash(count);
+            List<PersonHandMadeHash> listOfPeorson = GeneratePersonsListWithHandMadeHash(count);
 
+            Dictionary<PersonHandMadeHash, string>.KeyCollection keys = dictOfPerson.Keys;
+            PersonHandMadeHash[] keysPerson = new PersonHandMadeHash[keys.Count];
+            keys.CopyTo(keysPerson, 0);
+            PersonHandMadeHash person = keysPerson[_rand.Next(0, keys.Count)];
+
+            FindInDictionary(dictOfPerson, person);
+            Console.WriteLine("На поиск элемента в словаре с " + count + " элементов с const хешем ушло : " +
+                stopwatch.ElapsedMilliseconds + " миллисекунд");
+            long stopwatchTime = stopwatch.ElapsedMilliseconds;
+
+            FindInList(person, listOfPeorson);
+            Console.WriteLine("На поиск элемента в cписке с " + count + " элементов с const хешем ушло : " +
+                stopwatch.ElapsedMilliseconds + " миллисекунд");
+
+            if (stopwatch.ElapsedMilliseconds > stopwatchTime)
+                return true;
+            else return false;
+        }
+
+        [Test]
+        public void FindInListVSDictionaryIn100Instance()
+        {
+            int count = 100;
+
+           bool listIsBetter = FindInListVSDictionary(count);
+
+            Assert.IsTrue(listIsBetter);
+        }
+
+        [Test]
+        public void FindInListVSDictionaryIn10000Instance()
+        {
+            int count = 10000;
+
+            bool listIsBetter = FindInListVSDictionary(count);
+
+            Assert.IsTrue(listIsBetter);
+        }
+
+        [Test]
+        public void FindInListVSDictionaryWithHandMadeHashIn100000Instance()
+        {
+            int count = 100000;
+
+            bool dictIsBetter = FindInListVSDictionaryHandMadeHash(count);
+
+            Assert.IsTrue(!dictIsBetter);
+        }
     }
 }
