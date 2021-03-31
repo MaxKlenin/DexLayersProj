@@ -11,16 +11,18 @@ namespace Object.Person
 
         public Person()
         {
-            /*_fullName = "";
+            _fullName = "";
             _dateOfBirth = "";
-            _placeOFBirth = "";
-            _passportNumber = "";*/
+            _placeOfBirth = "";
+            _passportNumber = "";
         }
 
         public Person(String fullName, String dateOfBirth, String placeOFBirth, String passportNumber)
         {
-           /* if (fullName == null || dateOfBirth == null || placeOFBirth == null || passportNumber == null)
-                throw new ArgumentNullException("Ошибка в конструкторе Person - аргументы не могут быть null");*/
+            if (fullName == null || dateOfBirth == null || placeOFBirth == null || passportNumber == null)
+            {
+                throw new ArgumentNullException("#Person error# аргумент(ы) null");
+            }
             _fullName = fullName;
             _dateOfBirth = dateOfBirth;
             _placeOfBirth = passportNumber;
