@@ -37,31 +37,16 @@ namespace Object.Person
 
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                throw new ArgumentNullException("#Equals error# - сравнение с null.");
-            }
+            Person second = (Person)obj;
+            return _fullName == second._fullName &&
+                   _dateOfBirth == second._dateOfBirth &&
+                   _placeOfBirth == second._placeOfBirth &&
+                   _passportNumber == second._passportNumber;
 
-            if (!(obj is Person))
-            {
-                throw new ArgumentException("#Equals error# - Невозможное сравнение, объект не Person");
-            }
-            else
-            {
-                Person second = (Person)obj;
-                return _fullName == second._fullName &&
-                       _dateOfBirth == second._dateOfBirth &&
-                       _placeOfBirth == second._placeOfBirth &&
-                       _passportNumber == second._passportNumber;
-            }
         }
-
+            
         public static bool operator ==(Person first, Person second)
         {
-            if (first == null || second == null)
-            {
-                throw new ArgumentNullException("#Operator '==' error# сравнение с null");
-            }
             return first.Equals(second);
         }
 
