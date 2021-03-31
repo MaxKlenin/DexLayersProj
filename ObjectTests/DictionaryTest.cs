@@ -80,20 +80,6 @@ namespace ObjectTests
             return dict;
         }
 
-        private bool IsContainsInDictionary(Dictionary<Person, string> dictionary, Person person)
-        {
-            stopwatch.Restart();
-            bool result = dictionary.ContainsKey(person);
-            stopwatch.Stop();
-            return result;
-        }
-
-        private bool IsContainsInBadDictionary(Dictionary<PersonHandMadeHash, string> dictionary, PersonHandMadeHash person)
-        {
-            stopwatch.Restart();
-            bool result = dictionary.ContainsKey(person);
-            stopwatch.Stop();
-            return result;
-        }
+        
     }
 }
