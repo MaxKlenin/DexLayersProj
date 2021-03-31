@@ -208,7 +208,7 @@ namespace ObjectTests
 
            bool listIsBetter = FindInListVSDictionary(count);
 
-            Assert.IsTrue(listIsBetter);
+            Assert.IsTrue(!listIsBetter);
         }
 
         [Test]
@@ -218,7 +218,7 @@ namespace ObjectTests
 
             bool listIsBetter = FindInListVSDictionary(count);
 
-            Assert.IsTrue(listIsBetter);
+            Assert.IsTrue(!listIsBetter);
         }
 
         [Test]
