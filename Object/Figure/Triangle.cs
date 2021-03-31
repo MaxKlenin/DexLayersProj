@@ -10,17 +10,19 @@ namespace Object.Figure
 
         public Triangle(double x, double y, double z)
         {
-            if (x > 0 && y > 0 && z > 0)
+            if (x <= 0 || y <= 0 || z <= 0)
+                throw new ArgumentException("У треугольника заданны стороны ранвые нулю");
+            else
             {
-                if (x + y >= z && y + z >= x && x + z >= y)
+                if (x + y < z || y + z < x || x + z < y)
+                    throw new ArgumentException("Такого треугольника не существует");
+                else
                 {
                     _x = x;
                     _y = y;
                     _z = z;
                 }
-                else throw new ArgumentException("Такого треугольника не существует");
             }
-            else throw new ArgumentException("У треугольника заданны стороны ранвые нулю");
         }
 
         public override double GetSquare()

@@ -40,10 +40,16 @@ namespace ObjectTests
         {
             Console.WriteLine("***(Where) Породы собак начаниются на букву Б ***");
             var selectedDogeName = dogs.Where(d => d.Name.ToUpper().StartsWith("Б")).OrderBy(d => d.Name);
+            bool currentBreed = true;
             foreach (var item in selectedDogeName)
             {
                 Console.WriteLine(item.Name);
+                if(Convert.ToString(item.Name[0]) != "Б")
+                {
+                    currentBreed = false;
+                }
             }
+            Assert.IsTrue(currentBreed);
         }
         
         [Test]
@@ -62,9 +68,9 @@ namespace ObjectTests
         {
             int minNameLenght = dogs.Min(d => d.Name.Length);
             int maxNameLenght = dogs.Max(d => d.Name.Length);
+            int sumVaccinatedDog = dogs.Sum(d => Convert.ToInt32(d.IsVaccinated));
             Console.WriteLine($"Минимальное кол-во символов в название породы собаки: {minNameLenght}" +
                 $"\nМаксимальное кол-во символов в название породы собаки: {maxNameLenght}");
-            int sumVaccinatedDog = dogs.Sum(d => Convert.ToInt32(d.IsVaccinated));
             Console.WriteLine($"Общее кол-во привитых собак: {sumVaccinatedDog}");
         }
 

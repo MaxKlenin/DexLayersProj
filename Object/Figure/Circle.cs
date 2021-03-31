@@ -8,11 +8,13 @@ namespace Object.Figure
 
         public Circle(double radius)
         {
-            if (radius > 0)
+            if (radius <= 0)
+                throw new ArgumentException("Радиус не верно введён.");
+
+            else
             {
                 _radius = radius;
             }
-            else throw new ArgumentException("Радиус не верно введён.");
         }
 
         public override double GetSquare()

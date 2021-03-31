@@ -8,7 +8,11 @@ namespace Object.FigureComparer
     {
         public int Compare(BaseFigure first, BaseFigure second)
         {
-            if (first != null && second != null)
+            if (first == null || second == null)
+            {
+                throw new ArgumentNullException("argument null");
+            }
+            else
             {
                 double firstPyrimeter = first.GetPerimeter();
                 double secondPyrimeter = second.GetPerimeter();
@@ -21,10 +25,6 @@ namespace Object.FigureComparer
                     return 0;
                 }
                 else return 1;
-            }
-            else
-            {
-                throw new ArgumentNullException("argument null");
             }
         }
     }

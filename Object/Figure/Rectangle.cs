@@ -9,12 +9,13 @@ namespace Object.Figure
 
         public Rectangle(double x, double y)
         {
-            if (x > 0 && y > 0)
+            if (x <= 0 || y <= 0)
+                throw new ArgumentException("Wrong format Rectangle");
+            else
             {
                 _x = x;
                 _y = y;
             }
-            else throw new ArgumentException("Wrong format Rectangle");
         }
 
         public override double GetSquare()
