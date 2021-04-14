@@ -228,7 +228,7 @@ namespace ObjectTests
 
             bool dictIsBetter = FindInListVSDictionaryHandMadeHash(count);
 
-            Assert.IsTrue(!dictIsBetter);
+            Assert.IsTrue(dictIsBetter);
         }
     }
 }

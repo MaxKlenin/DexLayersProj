@@ -14,7 +14,7 @@ namespace ObjectTests
     {
 
         [Test]
-        public void CircleCollectionReverserCovarianceTest()
+        public void CompareCircleSquareTest()
         {
             ICircleSquareComparer<BaseFigure, BaseFigure> circleSquareComparer =
                 new CompareCircleSquare<BaseFigure, BaseFigure>(new Circle(5), new Circle(7));
@@ -22,7 +22,7 @@ namespace ObjectTests
         }
 
         [Test]
-        public void PrintFigureMethodsResultCounterCovarianceTest()
+        public void PrintFigureNameByEvetnTest()
         {
             IGetFigureName<Rectangle> printFigureMethodsResults =
                    new GetFigureNameByEvetn<BaseFigure>();
