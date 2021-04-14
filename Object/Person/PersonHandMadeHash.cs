@@ -6,6 +6,7 @@
             : base(_fullName, _dateOfBirth, _placeOfBirth, _passportNumber)
         {
         }
+
         public override int GetHashCode()
         {
             return 11111111;
