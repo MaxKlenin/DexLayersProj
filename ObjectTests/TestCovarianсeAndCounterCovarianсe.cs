@@ -27,7 +27,7 @@ namespace ObjectTests
             IGetFigureName<Rectangle> printFigureMethodsResults =
                    new GetFigureNameByEvetn<BaseFigure>();
              
-            Assert.DoesNotThrow(printFigureMethodsResults.PrintFigureNameByEvetn(new Rectangle(1, 2)));
+            Assert.DoesNotThrow(()=> printFigureMethodsResults.PrintFigureNameByEvetn(new Rectangle(1, 2)));
         }
     }
 }
