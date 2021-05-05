@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Object.Person
 {
-    public class GeneratorFromPerson
+    public static class GeneratorFromPerson
     {
         private static readonly string[] _names =
         {
@@ -97,7 +97,7 @@ namespace Object.Person
 
         static readonly Random _rand = new Random();
 
-        public static string GenerateDateOfBirth()
+        private static string GenerateDateOfBirth()
         {
             DateTime start = new DateTime(1990, 1, 1);
             int range = ((TimeSpan)(new DateTime(2005, 1, 1) - start)).Days;

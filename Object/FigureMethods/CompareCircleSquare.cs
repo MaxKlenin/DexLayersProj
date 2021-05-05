@@ -2,7 +2,7 @@
 using Object.FigureInterface;
 using System;
 
-namespace Object.FirureMethods
+namespace Object.FigureMethods
 {
     public class CompareCircleSquare<T, U> : ICircleSquareComparer<T, U> 
         where T : BaseFigure where U : BaseFigure

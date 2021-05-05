@@ -5,7 +5,7 @@ namespace Object
 {
     public class UniqueCollection<T>
     {
-        private Collection<T> _collection;
+        private readonly Collection<T> _collection;
 
         public UniqueCollection()
         {

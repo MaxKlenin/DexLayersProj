@@ -1,19 +1,19 @@
 ﻿namespace Object
 {
-    public class Fruit
+    public abstract class Fruit
     {
-        public readonly string Name;
-        public readonly double Weight;
+        private readonly string _name;
+        private readonly double _weight;
 
-        public Fruit(string name, double weight)
+        protected Fruit(string name, double weight)
         {
-            this.Name = name;
-            this.Weight = weight;
+            this._name = name;
+            this._weight = weight;
         }
 
         public override string ToString()
         {
-            return Name + " Вес:" + Weight;
+            return _name + " Вес:" + _weight;
         }
     }
 }

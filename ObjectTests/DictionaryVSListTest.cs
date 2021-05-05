@@ -1,7 +1,7 @@
 ﻿using Object.Figure;
 using NUnit.Framework;
 using System;
-using Object.FigureComparer;
+using Object.FigureCompare;
 using System.Diagnostics;
 using System.Collections.Generic;
 using Object.Person;

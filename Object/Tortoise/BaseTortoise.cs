@@ -1,16 +1,16 @@
-﻿namespace OOPLibrary.TortoiseType
+﻿namespace Object.Tortoise
 {
     public abstract class BaseTortoise
     {
-        protected string _name { get; }
-        protected string _body { get; }
-        protected string _shell { get; }
+        protected string Name { get; }
+        protected string Body { get; }
+        protected string Shell { get; }
 
-        protected BaseTortoise(string _name, string _body, string _shell)
+        protected BaseTortoise(string name, string body, string shell)
         {
-            this._name = _name;
-            this._body = _body;
-            this._shell = _shell;
+            this.Name = name;
+            this.Body = body;
+            this.Shell = shell;
         }
 
         public abstract void ShowInfo();

@@ -10,7 +10,7 @@ namespace ConsoleApp1
 {
     class MyDelegate
     {
-        List<Action> methodList = new List<Action>();
+        readonly List<Action> methodList = new List<Action>();
 
         public MyDelegate()
         {

@@ -1,17 +1,17 @@
 ﻿using System;
 
-namespace OOPLibrary.TortoiseType
+namespace Object.Tortoise
 {
     public class DefaultTortoise : BaseTortoise
     {
-        public DefaultTortoise(string _name, string _body, string _shell) :
-            base(_name, _body, _shell)
+        protected DefaultTortoise(string name, string body, string shell) :
+            base(name, body, shell)
         {
         }
 
         public override void ShowInfo()
         {
-            Console.WriteLine("Название:" + _name + "\n Тип тела:" + _body + "\n Панцирь:" + _shell + "\n");
+            Console.WriteLine("Название:" + Name + "\n Тип тела:" + Body + "\n Панцирь:" + Shell + "\n");
         }
     }
 }

@@ -2,7 +2,7 @@
 using Object.FigureInterface;
 using Object.Figure;
 
-namespace Object.FirureMethods
+namespace Object.FigureMethods
 {
    public class GetFigureNameByEvetn<T> : IGetFigureName<T> where T: BaseFigure
     {

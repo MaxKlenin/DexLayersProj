@@ -4,10 +4,10 @@ namespace Object.Person
 {
     public class Person
     {
-        public readonly string _fullName;
-        public readonly string _dateOfBirth;
-        public readonly string _placeOfBirth;
-        public readonly string _passportNumber;
+        private readonly string _fullName;
+        private readonly string _dateOfBirth;
+        private readonly string _placeOfBirth;
+        private readonly string _passportNumber;
 
         public Person()
         {
@@ -17,16 +17,16 @@ namespace Object.Person
             _passportNumber = "";
         }
 
-        public Person(String fullName, String dateOfBirth, String placeOFBirth, String passportNumber)
+        public Person(String fullName, String dateOfBirth, String placeOfBirth, String passportNumber)
         {
-            if (fullName == null || dateOfBirth == null || placeOFBirth == null || passportNumber == null)
+            if (fullName == null || dateOfBirth == null || placeOfBirth == null || passportNumber == null)
             {
                 throw new ArgumentNullException("#Person error# аргумент(ы) null");
             }
             _fullName = fullName;
             _dateOfBirth = dateOfBirth;
             _placeOfBirth = passportNumber;
-            _passportNumber = placeOFBirth;
+            _passportNumber = placeOfBirth;
         }
 
         public override string ToString()

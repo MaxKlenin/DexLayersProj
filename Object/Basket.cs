@@ -4,13 +4,13 @@ namespace Object
 {
     public class Basket : IEnumerable
     {
-        private Fruit[] _fruits;
+        private readonly Fruit[] _fruits;
 
         public Basket(Fruit[] fArray)
         {
             _fruits = new Fruit[fArray.Length];
 
-            for (int i = 0; i < fArray.Length; i++)
+            for (var i = 0; i < fArray.Length; i++)
             {
                 _fruits[i] = fArray[i];
             }

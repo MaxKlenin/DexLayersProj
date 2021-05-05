@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Object
+namespace Object.Animals
 {
 
     public class Doge

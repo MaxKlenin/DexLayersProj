@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Object.FigureComparer
+namespace Object.FigureCompare
 {
     public class PerimeterComparer : IComparer<BaseFigure>
     {

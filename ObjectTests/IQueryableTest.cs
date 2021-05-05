@@ -2,15 +2,16 @@ using Object;
 using NUnit.Framework;
 using System;
 using System.Linq;
+using Object.Animals;
 
 namespace ObjectTests
 {
     public class IQueryableTest
     {
         private Doge[] dogs;
-        private string[] dogeNames = { "Акита-ину", "Аляскинский Маламут", "Американская Акита",
-            "Бигль", "Бладхаунд", "Бобтейл", "Боксер", "Босерон",
-            "Немецкая овчарка", "Немецкий дог", "Ньюфаундленд"};
+        private string[] dogeNames = { "РђРєРёС‚Р°-РёРЅСѓ", "РђР»СЏСЃРєРёРЅСЃРєРёР№ РњР°Р»Р°РјСѓС‚", "РђРјРµСЂРёРєР°РЅСЃРєР°СЏ РђРєРёС‚Р°",
+            "Р‘РёРіР»СЊ", "Р‘Р»Р°РґС…Р°СѓРЅРґ", "Р‘РѕР±С‚РµР№Р»", "Р‘РѕРєСЃРµСЂ", "Р‘РѕСЃРµСЂРѕРЅ",
+            "РќРµРјРµС†РєР°СЏ РѕРІС‡Р°СЂРєР°", "РќРµРјРµС†РєРёР№ РґРѕРі", "РќСЊСЋС„Р°СѓРЅРґР»РµРЅРґ"};
 
         private void GenerateDogs()
         {
@@ -38,13 +39,13 @@ namespace ObjectTests
         [Test]
         public void WhereAndOrderBySamplingTest()
         {
-            Console.WriteLine("***(Where) Породы собак начаниются на букву Б ***");
-            var selectedDogeName = dogs.Where(d => d.Name.ToUpper().StartsWith("Б")).OrderBy(d => d.Name);
+            Console.WriteLine("***(Where) РџРѕСЂРѕРґС‹ СЃРѕР±Р°Рє РЅР°С‡Р°РЅРёСЋС‚СЃСЏ РЅР° Р±СѓРєРІСѓ Р‘ ***");
+            var selectedDogeName = dogs.Where(d => d.Name.ToUpper().StartsWith("Р‘")).OrderBy(d => d.Name);
             bool currentBreed = true;
             foreach (var item in selectedDogeName)
             {
                 Console.WriteLine(item.Name);
-                if(Convert.ToString(item.Name[0]) != "Б")
+                if(Convert.ToString(item.Name[0]) != "Р‘")
                 {
                     currentBreed = false;
                 }
@@ -55,7 +56,7 @@ namespace ObjectTests
         [Test]
         public void GroupBySamplingTest()
         {
-            Console.WriteLine("***(GroupBy) Кол-во собак каждой породы: ***");
+            Console.WriteLine("***(GroupBy) РљРѕР»-РІРѕ СЃРѕР±Р°Рє РєР°Р¶РґРѕР№ РїРѕСЂРѕРґС‹: ***");
             var dogeGroups = dogs.GroupBy(d => d.Name).Select(g => new { Name = g.Key, Count = g.Count() });
             foreach (var group in dogeGroups)
             {
@@ -69,35 +70,35 @@ namespace ObjectTests
             int minNameLenght = dogs.Min(d => d.Name.Length);
             int maxNameLenght = dogs.Max(d => d.Name.Length);
             int sumVaccinatedDog = dogs.Sum(d => Convert.ToInt32(d.IsVaccinated));
-            Console.WriteLine($"Минимальное кол-во символов в название породы собаки: {minNameLenght}" +
-                $"\nМаксимальное кол-во символов в название породы собаки: {maxNameLenght}");
-            Console.WriteLine($"Общее кол-во привитых собак: {sumVaccinatedDog}");
+            Console.WriteLine($"РњРёРЅРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ СЃРёРјРІРѕР»РѕРІ РІ РЅР°Р·РІР°РЅРёРµ РїРѕСЂРѕРґС‹ СЃРѕР±Р°РєРё: {minNameLenght}" +
+                $"\nРњР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»-РІРѕ СЃРёРјРІРѕР»РѕРІ РІ РЅР°Р·РІР°РЅРёРµ РїРѕСЂРѕРґС‹ СЃРѕР±Р°РєРё: {maxNameLenght}");
+            Console.WriteLine($"РћР±С‰РµРµ РєРѕР»-РІРѕ РїСЂРёРІРёС‚С‹С… СЃРѕР±Р°Рє: {sumVaccinatedDog}");
         }
 
         [Test]
         public void AnyAllSamplingTest()
         {
-            Console.WriteLine("***(AnyAll) Выборки по возрасту***");
+            Console.WriteLine("***(AnyAll) Р’С‹Р±РѕСЂРєРё РїРѕ РІРѕР·СЂР°СЃС‚Сѓ***");
             var dogeSampling = dogs.All(d => d.Time.Year < 2019);
 
             if (dogeSampling)
             {
-                Console.WriteLine("Все собаки родились до 2019 года");
+                Console.WriteLine("Р’СЃРµ СЃРѕР±Р°РєРё СЂРѕРґРёР»РёСЃСЊ РґРѕ 2019 РіРѕРґР°");
             }
             else
             {
-                Console.WriteLine("Не все собаки родились до 2019 года");
+                Console.WriteLine("РќРµ РІСЃРµ СЃРѕР±Р°РєРё СЂРѕРґРёР»РёСЃСЊ РґРѕ 2019 РіРѕРґР°");
             }
 
             dogeSampling = dogs.Any(d => d.Time.Year == 2020);
 
             if (dogeSampling)
             {
-                Console.WriteLine("Хотя бы одна собака родилась в 2020 году");
+                Console.WriteLine("РҐРѕС‚СЏ Р±С‹ РѕРґРЅР° СЃРѕР±Р°РєР° СЂРѕРґРёР»Р°СЃСЊ РІ 2020 РіРѕРґСѓ");
             }
             else
             {
-                Console.WriteLine("В 2020 году собаки не родились");
+                Console.WriteLine("Р’ 2020 РіРѕРґСѓ СЃРѕР±Р°РєРё РЅРµ СЂРѕРґРёР»РёСЃСЊ");
             }
         }
     }

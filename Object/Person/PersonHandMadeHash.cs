@@ -2,9 +2,12 @@
 {
     public class PersonHandMadeHash : Person
     {
-        public PersonHandMadeHash(string _fullName, string _dateOfBirth, string _placeOfBirth, string _passportNumber)
-            : base(_fullName, _dateOfBirth, _placeOfBirth, _passportNumber)
+        private readonly string _passportNumber;
+
+        public PersonHandMadeHash(string fullName, string dateOfBirth, string placeOfBirth, string passportNumber)
+            : base(fullName, dateOfBirth, placeOfBirth, passportNumber)
         {
+            this._passportNumber = passportNumber;
         }
 
         public override int GetHashCode()
