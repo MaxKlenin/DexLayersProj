@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Object.FigureInterface;
 using Object.Figure;
 
@@ -10,7 +8,7 @@ namespace Object.FirureMethods
     {
         public delegate void Notifier(string message);
         public event Notifier Notify;
-
+         
         public void PrintFigureNameByEvetn(T figure)
         {
             if (figure == null)

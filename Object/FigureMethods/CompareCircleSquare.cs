@@ -10,8 +10,8 @@ namespace Object.FirureMethods
         public delegate void Notifier(string message);
         public event Notifier Notify;
 
-        private T _figure1;
-        private U _figure2;
+        private readonly T _figure1;
+        private readonly U _figure2;
 
         public CompareCircleSquare(T figure1, U figure2)
         {
@@ -34,7 +34,7 @@ namespace Object.FirureMethods
             }
         }
 
-        public void PrintMessage(string message)
+        private void PrintMessage(string message)
         {
             Console.WriteLine(message);
         }
